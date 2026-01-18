@@ -382,6 +382,7 @@ def open_pdf_in_new_tab(pdf_bytes: bytes):
     st.markdown(
     f'<script>window.open("{pdf_data_url}", "_blank");</script>',
     unsafe_allow_html=True
+    )
         
 if st.button("⚙️ Generate PDF"):
     try:
@@ -409,6 +410,7 @@ if Path(output_pdf).exists():
         file_name=output_pdf,
         mime="application/pdf"
     )
+
 
 
 
