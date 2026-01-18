@@ -377,6 +377,7 @@ if st.button("⚙️ Generate PDF"):
         create_resume_pdf(
         json_path="resume_data.json",
         output_path="RachitS_Resume.pdf"
+        )
 
         st.success("PDF generated successfully!")
     except Exception as e:
@@ -389,6 +390,7 @@ if Path(OUTPUT_PDF).exists():
         file_name=OUTPUT_PDF,
         mime="application/pdf"
     )
+
 
 
 
