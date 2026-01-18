@@ -309,14 +309,14 @@ def create_resume_pdf(
 
         i += 2
 
-    """# ===== PROJECT HIGHLIGHTS (optional, dynamic) =====
-    projects = data.get("project_highlights") or []
-    if projects:
-        y = new_page_if_needed(y)
-        y = draw_section_title(c, "PROJECT HIGHLIGHTS", left, y, size=11)
-        y = draw_bullets(c, projects, left, y, content_w)
-        y -= 8
-    """
+    # ===== PROJECT HIGHLIGHTS (optional, dynamic) =====
+    #projects = data.get("project_highlights") or []
+    #if projects:
+       # y = new_page_if_needed(y)
+      #  y = draw_section_title(c, "PROJECT HIGHLIGHTS", left, y, size=11)
+     #   y = draw_bullets(c, projects, left, y, content_w)
+    #    y -= 8
+    
     # ===== CERTIFICATIONS (optional, dynamic) =====
     certs = data.get("certifications") or []
     if certs:
@@ -338,14 +338,14 @@ def create_resume_pdf(
     c.save()
     print(f"✅ Created: {output_path}")
 
-"""
-if __name__ == "__main__":
-    create_resume_pdf(
-        json_path="resume_data.json",
-        output_path="RachitS_IT_WB.pdf"
-    )
+
+#if __name__ == "__main__":
+ #   create_resume_pdf(
+  #      json_path="resume_data.json",
+   #     output_path="RachitS_IT_WB.pdf"
+    #)
     
-"""
+
 
 st.set_page_config(page_title="Resume Generator", page_icon="📄")
 
@@ -376,6 +376,13 @@ default_name = f"Resume_{datetime.now().strftime('%Y%m%d_%H%M')}"
 out_name = st.text_input("Output filename (no .pdf needed)", value=default_name)
 output_pdf = f"{safe_filename(out_name)}.pdf"
 
+def open_pdf_in_new_tab(pdf_bytes: bytes):
+    b64 = base64.b64encode(pdf_bytes).decode()
+    pdf_data_url = f"data:application/pdf;base64,{b64}"
+    st.markdown(
+    f'<script>window.open("{pdf_data_url}", "_blank");</script>',
+    unsafe_allow_html=True
+        
 if st.button("⚙️ Generate PDF"):
     try:
         # validate + save JSON
@@ -402,6 +409,7 @@ if Path(output_pdf).exists():
         file_name=output_pdf,
         mime="application/pdf"
     )
+
 
 
 
