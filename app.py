@@ -1,3 +1,4 @@
+import streamlit as st
 import json
 from pathlib import Path
 
@@ -341,3 +342,4 @@ if __name__ == "__main__":
         json_path="resume_data.json",
         output_path="RachitS_IT_WB.pdf"
     )
+
