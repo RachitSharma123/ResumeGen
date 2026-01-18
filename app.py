@@ -336,10 +336,59 @@ def create_resume_pdf(
     c.save()
     print(f"✅ Created: {output_path}")
 
-
+"""
 if __name__ == "__main__":
     create_resume_pdf(
         json_path="resume_data.json",
         output_path="RachitS_IT_WB.pdf"
     )
+    
+"""
+
+st.set_page_config(page_title="Resume Generator", page_icon="📄")
+
+st.title("📄 Resume Generator")
+st.caption("Edit JSON → Generate PDF → Download")
+
+JSON_PATH = Path("resume_data.json")
+OUTPUT_PDF = "Rachit_Sharma_Resume_Generated.pdf"
+
+if not JSON_PATH.exists():
+    st.error("resume_data.json not found in repo root")
+    st.stop()
+
+json_text = JSON_PATH.read_text(encoding="utf-8")
+
+edited_json = st.text_area(
+    "Edit resume_data.json",
+    value=json_text,
+    height=450
+)
+
+if st.button("⚙️ Generate PDF"):
+    try:
+        data = json.loads(edited_json)
+        JSON_PATH.write_text(json.dumps(data, indent=2), encoding="utf-8")
+
+        # 👇 CALL YOUR EXISTING PDF FUNCTION HERE
+        # example:
+        # generate_resume_pdf(str(JSON_PATH), OUTPUT_PDF)
+
+        create_resume_pdf(
+        json_path="resume_data.json",
+        output_path="RachitS_Resume.pdf"
+
+        st.success("PDF generated successfully!")
+    except Exception as e:
+        st.error(str(e))
+
+if Path(OUTPUT_PDF).exists():
+    st.download_button(
+        "⬇️ Download PDF",
+        data=Path(OUTPUT_PDF).read_bytes(),
+        file_name=OUTPUT_PDF,
+        mime="application/pdf"
+    )
+
+
 
