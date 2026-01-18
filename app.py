@@ -1,7 +1,9 @@
 import streamlit as st
 import json
 from pathlib import Path
-
+import base64
+import re
+from datetime import datetime
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import cm
 from reportlab.pdfbase.pdfmetrics import stringWidth
@@ -351,7 +353,6 @@ st.title("📄 Resume Generator")
 st.caption("Edit JSON → Generate PDF → Download")
 
 JSON_PATH = Path("resume_data.json")
-OUTPUT_PDF = "Rachit_Sharma_Resume_Generated.pdf"
 
 if not JSON_PATH.exists():
     st.error("resume_data.json not found in repo root")
@@ -365,31 +366,43 @@ edited_json = st.text_area(
     height=450
 )
 
+def safe_filename(name: str) -> str:
+    name = name.strip()
+    name = re.sub(r"[^A-Za-z0-9 _-]+", "", name)
+    name = re.sub(r"\s+", "_", name)
+    return name or "resume"
+
+default_name = f"Resume_{datetime.now().strftime('%Y%m%d_%H%M')}"
+out_name = st.text_input("Output filename (no .pdf needed)", value=default_name)
+output_pdf = f"{safe_filename(out_name)}.pdf"
+
 if st.button("⚙️ Generate PDF"):
     try:
+        # validate + save JSON
         data = json.loads(edited_json)
         JSON_PATH.write_text(json.dumps(data, indent=2), encoding="utf-8")
 
-        # 👇 CALL YOUR EXISTING PDF FUNCTION HERE
-        # example:
-        # generate_resume_pdf(str(JSON_PATH), OUTPUT_PDF)
-
-        create_resume_pdf(
-        json_path="resume_data.json",
-        output_path="RachitS_Resume.pdf"
-        )
+        # generate pdf
+        create_resume_pdf(json_path=str(JSON_PATH), output_path=output_pdf)
 
         st.success("PDF generated successfully!")
+
+        # auto-open in new tab
+        pdf_bytes = Path(output_pdf).read_bytes()
+        open_pdf_in_new_tab(pdf_bytes)
+
     except Exception as e:
         st.error(str(e))
 
-if Path(OUTPUT_PDF).exists():
+# show download button (dynamic filename)
+if Path(output_pdf).exists():
     st.download_button(
         "⬇️ Download PDF",
-        data=Path(OUTPUT_PDF).read_bytes(),
-        file_name=OUTPUT_PDF,
+        data=Path(output_pdf).read_bytes(),
+        file_name=output_pdf,
         mime="application/pdf"
     )
+
 
 
 
