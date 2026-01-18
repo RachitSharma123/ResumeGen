@@ -1,0 +1,88 @@
+{
+  "name": "RACHIT SHARMA",
+  "contact": "Melbourne, VIC | +61 0410 706 812 | sharmarachit923@gmail.com",
+
+  "career_objective": "Level 2 IT Helpdesk professional with strong experience supporting Microsoft-based environments across MSP, healthcare, education, and regulated enterprise settings. Skilled in troubleshooting complex incidents, supporting cloud and on-prem infrastructure, and delivering reliable, client-focused IT services. Brings hands-on exposure to Microsoft 365, Azure fundamentals, Windows Server, networking, and endpoint security. Seeking to contribute as a capable L2 technician within a growing regional MSP delivering high-quality managed IT services.",
+
+  "skills_snapshot": [
+    { "label": "L2 Service Desk Support", "value": "Incident & Problem Resolution, Escalation Handling, Root Cause Analysis, Client Follow-Ups" },
+    { "label": "Microsoft Technologies", "value": "Microsoft 365, Azure (Foundational), Active Directory, Group Policy, Windows Server" },
+    { "label": "Networking & Security", "value": "DNS, DHCP, VPNs, Firewall Concepts, Endpoint Protection, Backup Monitoring" },
+    { "label": "Infrastructure & Systems", "value": "Server Support, Patch Management, Endpoint Management, Infrastructure Refresh Support" },
+    { "label": "Projects & Deployments", "value": "User & Tenant Migrations, Device Rollouts, System Upgrades, Client Onboarding Support" }
+  ],
+
+  "experience": [
+    {
+      "company": "Healthcare Australia",
+      "role_line": "ICT Service Desk Specialist (L2) | Melbourne, VIC | Nov 2024 – Present",
+      "bullets": [
+        "Resolve escalated L2 incidents across Microsoft 365, Windows endpoints, and identity services in a regulated healthcare environment.",
+        "Administer Active Directory and Microsoft 365 user access, group policies, and device configurations.",
+        "Provide onsite and remote support for complex technical issues requiring advanced troubleshooting.",
+        "Support patching, endpoint compliance, and basic security controls in line with organisational policies.",
+        "Maintain high-quality documentation and contribute to knowledge base improvements."
+      ]
+    },
+    {
+      "company": "Office Choice Ltd",
+      "role_line": "IT Support Analyst (L1/L2) | Melbourne, VIC | Dec 2023 – Nov 2024",
+      "bullets": [
+        "Delivered L2 support across Microsoft 365, Windows Server-based services, and networked environments.",
+        "Troubleshot connectivity issues involving DNS, DHCP, VPN access, and firewall-related faults.",
+        "Assisted with infrastructure refreshes, hardware deployments, and system upgrades.",
+        "Worked closely with senior engineers to resolve complex incidents and infrastructure issues.",
+        "Supported client onboarding activities and maintained accurate ITSM documentation."
+      ]
+    },
+    {
+      "company": "Melbourne Institute of Technology",
+      "role_line": "System Support Assistant (Contract) | Melbourne, VIC | Jul 2022 – Oct 2023",
+      "bullets": [
+        "Supported internal systems and applications across Windows and Microsoft-based environments.",
+        "Assisted with server-side issue investigation and application support.",
+        "Provided technical support to staff and students in a hybrid onsite/remote model.",
+        "Worked within ITSM workflows to manage incidents and service requests."
+      ]
+    },
+    {
+      "company": "Emirates National Bank of Dubai",
+      "role_line": "Junior IT & Systems Support Consultant | Dubai | Jan 2021 – Oct 2022",
+      "bullets": [
+        "Provided L1/L2 IT and application support within a highly regulated banking environment.",
+        "Supported enterprise users across Windows systems, applications, and secure environments.",
+        "Worked with infrastructure and security teams to escalate and resolve complex incidents."
+      ]
+    }
+  ],
+
+  "education": [
+    {
+      "degree": "Master of Business Analytics",
+      "details": "Melbourne Institute of Technology, Australia "
+    },
+    {
+      "degree": "Bachelor of Computer Science Engineering",
+      "details": "SRM University, India"
+    }
+  ],
+
+  "certifications": [
+    "Google IT Support Professional (Completed)",
+    "CompTIA ITF+ (Completed)",
+    "Microsoft Azure Fundamentals (Planned)",
+    "ITIL 4 Foundation (Planned)"
+  ],
+
+  "additional_information": {
+    "work_rights": "Full Australian work rights",
+    "relocation": "Open to relocation for the right opportunity",
+    "availability": "Full-time",
+    "career_path": "Long-term growth within MSP and infrastructure-focused roles"
+  },
+
+  "references": [
+    "Stephen Honey, Project Lead, Healthcare Australia | +61 0475 887 197",
+    "Shashank Pandey, Sr. Software Developer, Commonwealth Bank of Australia | +61 0452 539 671"
+  ]
+}

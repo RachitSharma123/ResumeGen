@@ -1,0 +1,82 @@
+{
+  "name": "RACHIT SHARMA",
+  "contact": "Melbourne, VIC | +61 0410 706 812 | sharmarachit923@gmail.com",
+
+  "career_objective": "Business Analyst with a Master’s in Business Analytics and hands-on experience in IT support, data analysis, and technical documentation. Proven skills in SQL, Python, Power BI, and Agile delivery environments. Currently working at Healthcare Australia as an ICT Expert and Technical Writer. Seeking to apply data-driven problem-solving to real-world business challenges.",
+
+  "skills_snapshot": [
+    { "label": "Data & Analytics", "value": "SQL (T-SQL, PostgreSQL, MongoDB), Python (Pandas, NumPy, Scikit-learn), Excel (Adv.)" },
+    { "label": "BI & Visualization", "value": "Power BI, Tableau, Dashboarding, Reporting" },
+    { "label": "Statistical Modeling", "value": "Hypothesis Testing, Predictive Modeling" },
+    { "label": "Programming & Dev", "value": "Java, C#, HTML/CSS, JavaScript, PHP, .NET Core, REST APIs" },
+    { "label": "Tools & Platforms", "value": "Git, CI/CD (Basics), Agile, Scrum" },
+    { "label": "Soft Skills", "value": "Stakeholder Communication, Critical Thinking, Teamwork, Documentation" }
+  ],
+
+  "experience": [
+    {
+      "company": "Healthcare Australia",
+      "role_line": "ICT Expert & Technical Writer | Melbourne, VIC | Nov 2024 – Present",
+      "bullets": [
+        "Provided tech support across healthcare systems and internal platforms",
+        "Authored process documentation, user manuals, and knowledge base articles",
+        "Improved ticket resolution and incident tracking through streamlined guides"
+      ]
+    },
+    {
+      "company": "Office Choice Ltd",
+      "role_line": "IT Support Analyst | Melbourne, VIC | Dec 2023 – Nov 2024",
+      "bullets": [
+        "Delivered L1/L2 support, resolved hardware/software issues",
+        "Managed system updates, backups, and Active Directory provisioning"
+      ]
+    },
+    {
+  "company": "Melbourne Institute of Technology",
+  "role_line": "System Programmer (Contract) | Melbourne, VIC | Jul 2022 – Oct 2023",
+  "bullets": [
+    "Worked on .NET Framework and .NET Core applications supporting internal systems.",
+    "Assisted with data mining tasks and system-level troubleshooting in an Agile environment.",
+    "Used Visual Studio, Entity Framework, Jira, and Azure for development and issue tracking."
+  ]
+},
+
+{
+  "company": "Emirates National Bank of Dubai",
+  "role_line": "Consultant | Burj Nahar, Dubai | Jan 2021 – Oct 2022",
+  "bullets": [
+    "Supported enterprise clients with data analysis and software development tasks.",
+    "Worked with databases, data mining techniques, and Visual Studio-based solutions.",
+    "Trained juniors in database concepts, data mining, and .NET-based application development."
+     ]
+}
+  ],
+
+  "education": [
+    {
+      "degree": "Master of Business Analytics",
+      "details": "Melbourne Institute of Technology, Australia "
+    },
+    {
+      "degree": "Bachelor of Computer Science Engineering",
+      "details": "SRM University, India "
+    }
+  ],
+
+  "project_highlights": [
+    "Customer Churn Model: Logistic Regression (83% accuracy) + Power BI dashboard",
+    "Sales Dashboard: Year-over-year KPIs and trends in Power BI"
+  ],
+
+  "certifications": [
+    "Google IT Support Professional (Completed)",
+    "CompTIA ITF+ (Completed)",
+    "Google Data Analytics (In Progress)",
+    "Tableau Desktop Specialist (Planned)"
+  ],
+
+  "references": [
+    "Shashank Pandey, Sr. Software Developer, Commonwealth Bank of Australia | +61 0452 539 671",
+    "Stephen Honey, Project lead, HCA Australia | +61 0475 887 197"
+  ]
+}
