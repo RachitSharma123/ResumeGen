@@ -417,30 +417,70 @@ def create_cover_letter_pdf(
             return PAGE_H - top
         return ypos
 
-    # Date (optional, professional)
+    # ---- Date ----
     date_val = cl.get("date", "AUTO")
-    if date_val == "AUTO":
+    if str(date_val).strip().upper() == "AUTO" or not str(date_val).strip():
         date_val = datetime.now().strftime("%d %B %Y")
 
     c.setFont("Helvetica", 10)
-    c.drawString(left, y, date_val)
-    y -= 22
+    c.drawString(left, y, str(date_val))
+    y -= 18
 
-    # Dear Hiring Manager line
-    recipient = cl.get("recipient", "Hiring Manager")
-    c.drawString(left, y, f"Dear {recipient},")
-    y -= 22
+    # ---- Recipient block (optional) ----
+    recipient = str(cl.get("recipient", "Hiring Manager")).strip()
+    company = str(cl.get("company", "")).strip()
+    company_address = str(cl.get("company_address", "")).strip()
+
+    # Print as letter address block (only if provided)
+    c.setFont("Helvetica", 10)
+    if recipient:
+        c.drawString(left, y, recipient)
+        y -= 12
+    if company:
+        c.drawString(left, y, company)
+        y -= 12
+    if company_address:
+        y = draw_wrapped_text(c, company_address, left, y, content_w, font="Helvetica", size=10, leading=12)
+        y -= 2
+
+    y -= 8
+    y = new_page_if_needed(y)
+
+    # ---- Subject (optional) ----
+    role_title = str(cl.get("role_title", "")).strip()
+    subject = str(cl.get("subject", "")).strip()
+    if role_title and "[Role Title]" in subject:
+        subject = subject.replace("[Role Title]", role_title)
+
+    if subject:
+        c.setFont("Helvetica-Bold", 10.5)
+        y = draw_wrapped_text(c, subject, left, y, content_w, font="Helvetica-Bold", size=10.5, leading=13)
+        y -= 6
 
     y = new_page_if_needed(y)
 
-    # Main letter body
+    # ---- Greeting line: use opening if it's "Dear ...", else auto Dear recipient ----
+    opening = str(cl.get("opening", "")).strip()
+    if opening.lower().startswith("dear"):
+        greeting = opening
+        opening_for_body = ""  # don't repeat
+    else:
+        greeting = f"Dear {recipient or 'Hiring Manager'},"
+        opening_for_body = opening
+
+    c.setFont("Helvetica", 10.5)
+    c.drawString(left, y, greeting)
+    y -= 20
+    y = new_page_if_needed(y)
+
+    # ---- Main letter body (paragraph style) ----
     y = draw_paragraphs_and_bullets(
         c,
-        opening=cl.get("opening", ""),
+        opening=opening_for_body,
         body_points=cl.get("body_points", []),
-        closing=cl.get("closing", ""),
-        signature=cl.get("signature_name", ""),
-        phone=cl.get("phone_number", ""),
+        closing="",  # we'll print closing ourselves below
+        signature="",  # we'll print signature ourselves below
+        phone="",
         x=left,
         y=y,
         max_width=content_w,
@@ -449,6 +489,56 @@ def create_cover_letter_pdf(
         leading=14,
         para_gap=8
     )
+
+    y = new_page_if_needed(y)
+
+    # ---- Closing ----
+    closing = str(cl.get("closing", "Kind regards,")).strip()
+    y -= 2
+    c.setFont("Helvetica", 10.5)
+    c.drawString(left, y, closing)
+    y -= 22
+
+    # ---- Signature + contact ----
+    signature_name = str(cl.get("signature_name", data.get("name", ""))).strip()
+    phone_number = str(cl.get("phone_number", "")).strip()
+    email = str(cl.get("email", "")).strip()
+
+    c.setFont("Helvetica-Bold", 10.5)
+    if signature_name:
+        c.drawString(left, y, signature_name)
+        y -= 14
+
+    c.setFont("Helvetica", 10)
+    if phone_number:
+        c.drawString(left, y, phone_number)
+        y -= 12
+    if email:
+        c.drawString(left, y, email)
+        y -= 12
+
+    # ---- Word count (auto-calc + write back to JSON) ----
+    def wc_count(text: str) -> int:
+        return len(re.findall(r"\b[\w']+\b", text or ""))
+
+    body_points = cl.get("body_points", []) or []
+    wc_text = " ".join([
+        str(date_val),
+        recipient, company, company_address,
+        subject, greeting,
+        opening_for_body,
+        " ".join([str(p) for p in body_points]),
+        closing,
+        signature_name, phone_number, email
+    ])
+    cl["word_count"] = wc_count(wc_text)
+    data["cover_letter"] = cl
+
+    # Save updated word_count back into file (safe)
+    try:
+        Path(json_path).write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+    except Exception:
+        pass
 
     c.save()
     print(f"✅ Created cover letter: {output_path}")
@@ -540,6 +630,7 @@ if Path(cover_pdf).exists():
         file_name=cover_pdf,
         mime="application/pdf"
     )
+
 
 
 
