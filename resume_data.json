@@ -86,24 +86,30 @@
     "Shashank Pandey, Sr. Software Developer, Commonwealth Bank of Australia | +61 0452 539 671"
   ],
   
-  "cover_letter": {
-  "date": "AUTO", 
+ "cover_letter": {
+  "date": "AUTO",
   "recipient": "Hiring Manager",
   "company": "Barwon Health",
   "role_title": "ICT Support Officer / L2 Service Desk",
   "company_address": "Geelong, VIC",
   "subject": "Application for ICT Support Officer / L2 Service Desk",
-  "opening": "I’m writing to apply for ...",
+
+  "opening": "I am writing to apply for the ICT Support Officer position.",
+
   "body_points": [
-    "Point 1: L2 support in regulated healthcare",
-    "Point 2: Microsoft 365 + AD + endpoint troubleshooting",
-    "Point 3: Client-focused communication + documentation",
-    "Point 4: Willing to relocate + a reason "
+    "Proven experience delivering Level 1 and Level 2 IT support in regulated healthcare and enterprise environments.",
+    "Hands-on support across Microsoft 365, Active Directory, Intune-managed endpoints, and Windows systems.",
+    "Strong client-focused communication, documentation, and knowledge base maintenance.",
+    "Willing to relocate and do not require sponsorship."
   ],
-  "closing": "I’d welcome the opportunity to discuss...",
-  "signature_name": "Rachit Sharma"
+
+  "closing": "I would welcome the opportunity to further discuss how my skills and experience can contribute to your organisation.",
+
+  "signature_name": "Rachit Sharma",
+  "phone_number": "+61 0410 706 812"
 }
 }
+
 
 
 
