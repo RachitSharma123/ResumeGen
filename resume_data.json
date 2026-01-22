@@ -89,26 +89,26 @@
  "cover_letter": {
   "date": "AUTO",
   "recipient": "Hiring Manager",
-  "company": "Barwon Health",
-  "role_title": "ICT Support Officer / L2 Service Desk",
-  "company_address": "Geelong, VIC",
-  "subject": "Application for ICT Support Officer / L2 Service Desk",
-
-  "opening": "I am writing to apply for the ICT Support Officer position.",
-
+  "company": "",
+  "role_title": "",
+  "company_address": "",
+  "subject": "Application for [Role Title] – Rachit Sharma",
+  "opening": "Dear Hiring Manager,",
   "body_points": [
-    "Proven experience delivering Level 1 and Level 2 IT support in regulated healthcare and enterprise environments.",
-    "Hands-on support across Microsoft 365, Active Directory, Intune-managed endpoints, and Windows systems.",
-    "Strong client-focused communication, documentation, and knowledge base maintenance.",
-    "Willing to relocate and do not require sponsorship."
+    "Strong opening paragraph summary (intent + fit in 3–4 lines)",
+    "Key alignment paragraph with 2–3 quantified achievements/tools matching JD",
+    "Motivation paragraph (why this role/company + growth mindset)",
+    "Optional short 4th point if needed for length"
   ],
-
-  "closing": "I would welcome the opportunity to further discuss how my skills and experience can contribute to your organisation.",
-
+  "closing": "Kind regards,",
   "signature_name": "Rachit Sharma",
-  "phone_number": "+61 0410 706 812"
+  "phone_number": "+61 0410 706 812",
+  "email": "sharmarachit923@gmail.com",
+  "word_count": 0
 }
+
 }
+
 
 
 
