@@ -344,7 +344,90 @@ def create_resume_pdf(
   #      json_path="resume_data.json",
    #     output_path="RachitS_IT_WB.pdf"
     #)
-    
+
+def create_cover_letter_pdf(json_path="resume_data.json", output_path="CoverLetter.pdf"):
+    data = json.loads(Path(json_path).read_text(encoding="utf-8"))
+    cl = data.get("cover_letter", {})
+
+    c = canvas.Canvas(output_path, pagesize=A4)
+    draw_page_border(c, PAGE_W, PAGE_H)
+
+    left = 0.5 * cm
+    right = 0.5 * cm
+    top = 0.75 * cm
+    bottom = 0 * cm
+    content_w = PAGE_W - left - right
+    y = PAGE_H - top
+
+    def new_page_if_needed(ypos):
+        if ypos < bottom + 2 * cm:
+            c.showPage()
+            draw_page_border(c, PAGE_W, PAGE_H)
+            return PAGE_H - top
+        return ypos
+
+    # Header
+    c.setFont("Helvetica-Bold", 16)
+    c.drawString(left, y, data.get("name", "YOUR NAME"))
+    y -= 15
+    c.setFont("Helvetica", 9)
+    c.drawString(left, y, data.get("contact", "Location | Phone | Email"))
+    y -= 18
+
+    # Date
+    date_str = cl.get("date", "AUTO")
+    if date_str == "AUTO":
+        date_str = datetime.now().strftime("%d %B %Y")
+
+    c.setFont("Helvetica", 10)
+    c.drawString(left, y, date_str)
+    y -= 16
+
+    # Recipient block
+    recipient_lines = [
+        cl.get("recipient", "Hiring Manager"),
+        cl.get("company", ""),
+        cl.get("company_address", "")
+    ]
+    for line in recipient_lines:
+        if line.strip():
+            c.drawString(left, y, line)
+            y -= 12
+    y -= 10
+
+    # Subject
+    subject = cl.get("subject", "")
+    if subject:
+        c.setFont("Helvetica-Bold", 10.5)
+        y = draw_wrapped_text(c, subject, left, y, content_w, font="Helvetica-Bold", size=10.5, leading=12)
+        y -= 6
+
+    # Opening
+    c.setFont("Helvetica", 10.5)
+    y = draw_wrapped_text(c, cl.get("opening", ""), left, y, content_w, font="Helvetica", size=10.5, leading=14)
+    y = new_page_if_needed(y)
+
+    # Body bullets (optional)
+    body_points = cl.get("body_points", [])
+    if body_points:
+        y -= 4
+        y = draw_bullets(c, body_points, left, y, content_w, font="Helvetica", size=10.5, leading=14)
+
+    # Closing
+    closing = cl.get("closing", "")
+    if closing:
+        y -= 6
+        y = draw_wrapped_text(c, closing, left, y, content_w, font="Helvetica", size=10.5, leading=14)
+
+    # Sign-off
+    y -= 18
+    c.drawString(left, y, "Sincerely,")
+    y -= 22
+    c.setFont("Helvetica-Bold", 11)
+    c.drawString(left, y, cl.get("signature_name", data.get("name", "")))
+
+    c.save()
+
 
 
 st.set_page_config(page_title="Resume Generator", page_icon="📄")
@@ -410,6 +493,29 @@ if Path(output_pdf).exists():
         file_name=output_pdf,
         mime="application/pdf"
     )
+if st.button("📝 Generate Cover Letter PDF"):
+    try:
+        data = json.loads(edited_json)
+        JSON_PATH.write_text(json.dumps(data, indent=2), encoding="utf-8")
+
+        cover_pdf = f"{safe_filename(out_name)}_CoverLetter.pdf"
+        create_cover_letter_pdf(json_path=str(JSON_PATH), output_path=cover_pdf)
+
+        st.success("Cover Letter PDF generated!")
+        pdf_bytes = Path(cover_pdf).read_bytes()
+        open_pdf_in_new_tab(pdf_bytes)
+
+    except Exception as e:
+        st.error(str(e))
+
+if Path(f"{safe_filename(out_name)}_CoverLetter.pdf").exists():
+    st.download_button(
+        "⬇️ Download Cover Letter",
+        data=Path(f"{safe_filename(out_name)}_CoverLetter.pdf").read_bytes(),
+        file_name=f"{safe_filename(out_name)}_CoverLetter.pdf",
+        mime="application/pdf"
+    )
+
 
 
 
