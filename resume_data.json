@@ -85,4 +85,23 @@
     "Stephen Honey, Project Lead, Healthcare Australia | +61 0475 887 197",
     "Shashank Pandey, Sr. Software Developer, Commonwealth Bank of Australia | +61 0452 539 671"
   ]
+  "cover_letter": {
+  "date": "AUTO", 
+  "recipient": "Hiring Manager",
+  "company": "Barwon Health",
+  "role_title": "ICT Support Officer / L2 Service Desk",
+  "company_address": "Geelong, VIC",
+  "subject": "Application for ICT Support Officer / L2 Service Desk",
+  "opening": "I’m writing to apply for ...",
+  "body_points": [
+    "Point 1: L2 support in regulated healthcare",
+    "Point 2: Microsoft 365 + AD + endpoint troubleshooting",
+    "Point 3: Client-focused communication + documentation"
+    "Point 4: Willing to relocate + a reason "
+  ],
+  "closing": "I’d welcome the opportunity to discuss...",
+  "signature_name": "Rachit Sharma"
+  "contact": "Melbourne, VIC | +61 0410 706 812 | sharmarachit923@gmail.com"
 }
+}
+
