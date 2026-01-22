@@ -1,3 +1,5 @@
-streamlit
-reportlab
-
+streamlit>=1.31
+openai>=1.12.0
+reportlab>=4.0
+python-dateutil>=2.8
+pathlib
