@@ -547,6 +547,18 @@ def create_cover_letter_pdf(
     print(f"✅ Created cover letter: {output_path}")
 
 
+
+if st.button("🔑 Test OpenAI Key"):
+    try:
+        r = client.responses.create(
+            model="gpt-5.1",
+            input="Say OK"
+        )
+        st.success("API key works ✅")
+    except Exception as e:
+        st.error(str(e))
+
+
 st.set_page_config(page_title="Resume Generator", page_icon="📄")
 
 st.title("📄 Resume Generator")
@@ -633,15 +645,7 @@ if Path(cover_pdf).exists():
         file_name=cover_pdf,
         mime="application/pdf"
     )
-if st.button("🔑 Test OpenAI Key"):
-    try:
-        r = client.responses.create(
-            model="gpt-5.1",
-            input="Say OK"
-        )
-        st.success("API key works ✅")
-    except Exception as e:
-        st.error(str(e))
+
 
 
 
