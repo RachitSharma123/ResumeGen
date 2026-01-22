@@ -1,13 +1,16 @@
-import streamlit as st
+from openai import OpenAI
 import json
 from pathlib import Path
 import base64
 import re
+import streamlit as st
 from datetime import datetime
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import cm
 from reportlab.pdfbase.pdfmetrics import stringWidth
 from reportlab.pdfgen import canvas
+
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 PAGE_W, PAGE_H = A4
 MIN_LINE_GAP = 0.8   # this is your 0.08 paragraph spacing (in points)
@@ -630,6 +633,16 @@ if Path(cover_pdf).exists():
         file_name=cover_pdf,
         mime="application/pdf"
     )
+if st.button("🔑 Test OpenAI Key"):
+    try:
+        r = client.responses.create(
+            model="gpt-5.1",
+            input="Say OK"
+        )
+        st.success("API key works ✅")
+    except Exception as e:
+        st.error(str(e))
+
 
 
 
