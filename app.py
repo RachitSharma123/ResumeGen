@@ -10,7 +10,6 @@ from reportlab.lib.units import cm
 from reportlab.pdfbase.pdfmetrics import stringWidth
 from reportlab.pdfgen import canvas
 
-client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 PAGE_W, PAGE_H = A4
 MIN_LINE_GAP = 0.8   # this is your 0.08 paragraph spacing (in points)
@@ -548,15 +547,7 @@ def create_cover_letter_pdf(
 
 
 
-if st.button("🔑 Test OpenAI Key"):
-    try:
-        r = client.responses.create(
-            model="gpt-5.1",
-            input="Say OK"
-        )
-        st.success("API key works ✅")
-    except Exception as e:
-        st.error(str(e))
+
 
 
 st.set_page_config(page_title="Resume Generator", page_icon="📄")
@@ -645,6 +636,7 @@ if Path(cover_pdf).exists():
         file_name=cover_pdf,
         mime="application/pdf"
     )
+
 
 
 
